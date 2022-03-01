@@ -17,10 +17,11 @@ def run(parent_url: str = None):
 
         reader = DataReader(data_url=path.join(parent_url, str(bank_code.value) + ".csv"))
 
-        get_deposit = reader.select(column_id="Item number", search_value=1)
-        deposits = get_deposit["TOTAL(7)"].values[0]
-        get_loan = reader.select(column_id="Item number", search_value=110)
-        loans = get_loan["TOTAL ASSETS (Col 1 plus col 3)(5)"].values[0]
+        get_deposit = reader.select(column_id="Item Number", search_value=1)
+
+        deposits = get_deposit["TOTAL"].values[0]
+        get_loan = reader.select(column_id="Item Number", search_value=110)
+        loans = get_loan["TOTAL ASSETS (Col 1 plus col 3)"].values[0]
 
         output[bank_code.name] = {'deposits': deposits,
                                   'loans': loans}

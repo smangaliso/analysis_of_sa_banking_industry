@@ -12,8 +12,9 @@ def run(parent_url: str = None):
     """
     data_directories = [path.dirname(file) for file in glob(path.join(parent_url, "**", "Total.csv"))]
 
+
     # Init output dict
-    output = {}
+    output = dict()
 
     # Calculate Loan/Deposit Ratio
     for data_directory in data_directories:
@@ -37,20 +38,16 @@ def calculate_loan_deposit_ratio(data_directory: str = None, output: dict = None
     # Do calculate
     for bank_code in BankCodes:
         data_url = path.join(data_directory, str(bank_code.value) + ".csv")
-        # print(bank_code, data_url)
+
         data_reader = DataReader(data_url=data_url)
 
         # Get loans
-        try:
-            loans = data_reader.select(column_id="Item number", search_value=110)["TOTAL ASSETS (Col 1 plus col 3)(5)"].values[0]
-        except TypeError as te:
-            loans = data_reader.select(column_id="Item Number", search_value=110)["TOTAL ASSETS (Col 1 plus col 3)"].values[0]
+
+        loans = data_reader.select(column_id="Item Number", search_value=110)["TOTAL ASSETS (Col 1 plus col 3)"].values[0]
 
         # Get Deposits
-        try:
-            deposits = data_reader.select(column_id="Item number", search_value=1)["TOTAL(7)"].values[0]
-        except TypeError as te:
-            deposits = data_reader.select(column_id="Item Number", search_value=1)["TOTAL"].values[0]
+
+        deposits = data_reader.select(column_id="Item Number", search_value=1)["TOTAL"].values[0]
 
         # Calculate ratio
         ratio = loans / deposits

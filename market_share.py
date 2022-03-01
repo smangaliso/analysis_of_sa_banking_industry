@@ -1,7 +1,7 @@
 from datareader import (DataReader)
 
 from os import path
-import task3_1
+import deposit_loan
 
 
 def run(parent_url: str = None):
@@ -13,12 +13,12 @@ def run(parent_url: str = None):
 
     # Read total
     reader = DataReader(data_url=path.join(parent_url, "TOTAL" + ".csv"))
-    row = reader.select(column_id="Item number", search_value=1)
-    total = row["TOTAL(7)"].values[0]
+    row = reader.select(column_id="Item Number", search_value=1)
+    total = row["TOTAL"].values[0]
 
     # get deposits
 
-    bank_deposits_info = task3_1.run(parent_url)
+    bank_deposits_info = deposit_loan.run(parent_url)
 
     for bank in bank_deposits_info:
         deposits = bank_deposits_info[bank]['deposits']

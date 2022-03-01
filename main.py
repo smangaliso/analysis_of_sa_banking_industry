@@ -1,9 +1,11 @@
 from pprint import pprint
 from os import (path)
 
-import task3_1
-import task3_2
-import task3_3
+import deposit_loan
+import market_share
+import loan_to_deposit_ratio
+import mortgages
+import investments
 
 
 def select(data_reader=None, column_id: str = None, search_value: float = None):
@@ -29,19 +31,26 @@ def main(bank_url: str = None):
     if bank_url is None:
         return
 
-    #run Task 3.1
-    deposit_and_loans = task3_1.run(parent_url=bank_url)
-    pprint(deposit_and_loans)
+    # run deposit_loan
+    deposit_and_loans = deposit_loan.run(parent_url=bank_url)
 
-    # Run Task 3.2
-    bank_market_share = task3_2.run(parent_url=bank_url)
-    pprint(bank_market_share, sort_dicts=False)
 
-    # Run Task 3.3
-    ldr = task3_3.run(parent_url=path.dirname(bank_url))
-    pprint(ldr)
+    # Run market_share
+    bank_market_share = market_share.run(parent_url=bank_url)
+
+
+    # Run loan to deposit ratio
+    ldr = loan_to_deposit_ratio.run(parent_url=path.dirname(bank_url))
+
+
+    # run mortgages
+    mortgage = mortgages.run(parent_url=path.dirname(bank_url))
+
+    #run investments
+    investment = investments.run(parent_url=path.dirname(bank_url))
+    pprint(investment)
 
 
 if __name__ == '__main__':
-    bank_url = r"C:\Users\smanga\Downloads\BA900SampleData\2020-08-01"
+    bank_url = r"C:\Users\Pitso\Downloads\BA900SampleData\2021-10-01"
     main(bank_url=bank_url)
