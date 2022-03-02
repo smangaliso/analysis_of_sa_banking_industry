@@ -1,3 +1,5 @@
+import os
+
 from datareader import (DataReader)
 from bankstocode import (BankCodes)
 from os import path
@@ -5,6 +7,8 @@ from glob import glob
 
 
 def run(parent_url: str = None):
+    if type(parent_url) not in [str,bytes,os.PathLike]:
+        raise TypeError('Type of parent url can only be a string or bytes')
     """
 
     :param parent_url:

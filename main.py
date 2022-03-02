@@ -35,13 +35,14 @@ def main(bank_url: str = None):
     deposit_and_loans = deposit_loan.run(parent_url=bank_url)
 
 
+
     # Run market_share
     bank_market_share = market_share.run(parent_url=bank_url)
 
 
     # Run loan to deposit ratio
     ldr = loan_to_deposit_ratio.run(parent_url=path.dirname(bank_url))
-
+    pprint(ldr)
 
     # run mortgages
     mortgage = mortgages.run(parent_url=path.dirname(bank_url))
@@ -52,5 +53,5 @@ def main(bank_url: str = None):
 
 
 if __name__ == '__main__':
-    bank_url = r"C:\Users\Pitso\Downloads\BA900SampleData\2021-10-01"
+    bank_url = r"C:\Users\smanga\Downloads\BA900SampleData\2021-10-01"
     main(bank_url=bank_url)
