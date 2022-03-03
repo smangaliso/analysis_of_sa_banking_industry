@@ -37,13 +37,13 @@ class DataReader(object):
         tables = reversed(re.findall("^Table\\s*\\d+", tmp, re.MULTILINE))
 
         for table in tables:
-            table_data = re.split(table+",?", tmp)
+            table_data = re.split(table + ",?", tmp)
             if len(table_data) > 1:
                 table_data = table_data[1].strip()
             else:
                 table_data = table_data[0].strip()
 
-            tmp = tmp.replace(table_data, "").strip().replace(table+",", "").strip()
+            tmp = tmp.replace(table_data, "").strip().replace(table + ",", "").strip()  # removes the last table
             df = pd.read_csv(StringIO(table_data), header=0)
             self.data[table] = df
 
