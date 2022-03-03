@@ -9,3 +9,4 @@ class BankCodes(Enum):
     Standard_Bank: int = 416061
     Nedbank: int = 416088
 
+
