@@ -32,17 +32,4 @@ def run(parent_url: str = None):
 
     return output
 
-    # data_reader = DataReader(data_url=parent_url)
-    #
-    # #  Task 3.1 (a)
-    # deposits = DataReader.select(data_reader=data_reader, column_id="Item number", search_value=1)["TOTAL(7)"].values[0]
-    #
-    # output['deposits'] = deposits
-    #
-    #
-    # # Task 3.1 (b)
-    # loans = DataReader.select(data_reader=data_reader, column_id="Item number", search_value=110) \
-    #     ["TOTAL ASSETS (Col 1 plus col 3)(5)"].values[0]
-    # output['loans'] = loans
 
-    return output
