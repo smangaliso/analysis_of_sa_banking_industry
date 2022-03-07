@@ -25,19 +25,19 @@
         <div class="col-sm-4">
           <div class="p-3 card">
             <h4 class="text-center">Loans and Deposits</h4>
-            <canvas id="loans-deposits" width="300" height="150"></canvas>
+            <canvas id="loans-deposits" width="300" height="300"></canvas>
           </div>
         </div>
         <div class="col-sm-4">
           <div class="p-3 card">
             <h4 class="text-center">Market Share</h4>
-            <canvas id="market-share"></canvas>
+            <canvas class="wrapper" id="market-share"></canvas>
           </div>
         </div>
         <div class="col-sm-4">
           <div class="p-3 card">
             <h4 class="text-center">Loan to Deposit Ratio</h4>
-            <canvas id="ldr"></canvas>
+            <canvas id="ldr" width="300" height="300"></canvas>
           </div>
         </div>
       </div>
@@ -46,13 +46,13 @@
         <div class="col-sm-6">
           <div class="p-3 card">
             <h4 class="text-center">Mortgages</h4>
-            <canvas id="mortages"></canvas>
+            <canvas id="mortgages" width="300" height="150"></canvas>
           </div>
         </div>
         <div class="col-sm-6">
           <div class="p-3 card">
             <h4 class="text-center">Investments</h4>
-            <canvas id="investment"></canvas>
+            <canvas id="investment" width="300" height="150"></canvas>
           </div>
         </div>
       </div>
@@ -68,6 +68,8 @@
 <script>
   let dep = {{deposits_and_loans | safe}}
   let market_share = {{ bank_market_share | safe}}
-  console.log('market_share', market_share)
+  let ratio = {{ldr | safe}}
+  let mortgages = {{mortgage | safe}}
+  let investments = {{investment | safe}}
 </script>
 <script src="{{url_for('static',filename='js/main.js')}}"></script>

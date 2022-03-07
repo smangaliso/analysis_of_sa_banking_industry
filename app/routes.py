@@ -8,6 +8,7 @@ from flask import render_template
 from os import path
 
 
+
 @app.route('/')
 def index():
     bank_url = r"C:\Users\Pitso\Downloads\BA900SampleData\2021-10-01"
@@ -16,7 +17,7 @@ def index():
     bank_market_share = market_share.run(parent_url=bank_url)
 
     ldr = loan_to_deposit_ratio.run(parent_url=path.dirname(bank_url))
-
+    print(ldr)
     mortgage = mortgages.run(parent_url=path.dirname(bank_url))
 
     investment = investments.run(parent_url=path.dirname(bank_url))
