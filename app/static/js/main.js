@@ -70,15 +70,6 @@ var myChart = new Chart(ctx_ms, {
       },
     ],
   },
-  options: {
-    tooltips: {
-      enabled: false,
-    },
-    legend: {
-      display: false, // <- the important part
-    },
-    events: [],
-  },
 });
 
 // plot loan to deposit ratio
